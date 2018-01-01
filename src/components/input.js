@@ -7,6 +7,7 @@ export default class Input extends Component {
             <input 
                 type={ this.props.type || 'text' } 
                 placeholder={ this.props.placeholder || '' } 
+                value={ this.props.value } 
                 name={ this.props.name } 
                 onChange={ this.props.handler } />
         );
@@ -16,6 +17,7 @@ export default class Input extends Component {
 Input.propTypes = {
     type: PropTypes.string,
     placeholder: PropTypes.string,
+    value: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     handler: PropTypes.func.isRequired
 }

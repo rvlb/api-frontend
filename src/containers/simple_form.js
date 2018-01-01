@@ -30,6 +30,7 @@ class SimpleForm extends Component {
                 <Input 
                     name={ name } 
                     type={ field.type } 
+                    value={ this.state[name] }
                     placeholder={ field.placeholder } 
                     handler={ this.inputHandler } />
             </div>
