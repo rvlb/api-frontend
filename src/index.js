@@ -1,36 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 
 import registerServiceWorker from './registerServiceWorker';
-
-import reducers from './reducers';
-
+import configureStore from './configure_store';
 import Form from './containers/simple_form';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore)
+const formFields = {
+    username: { placeholder: 'Usuário' },
+    password: { placeholder: 'Senha', type: 'password' }
+}
 
 const App = () => (
     <div>
-        <Form 
-            fields={
-                {
-                    username: {
-                        placeholder: 'Usuário'
-                    },
-                    password: {
-                        placeholder: 'Senha',
-                        type: 'password'
-                    }
-                }
-            } />
+        <Form fields={ formFields } />
     </div>
 );
 
 ReactDOM.render(
-    <Provider store={ createStoreWithMiddleware(reducers) }>
+    <Provider store={ configureStore() }>
         <App />
     </Provider>, 
     document.getElementById('root')
