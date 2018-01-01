@@ -11,7 +11,8 @@ const ACCEPTED_INPUT_TYPES = ['text', 'password', 'email', 'hidden'];
 class SimpleForm extends Component {
     constructor(props) {
         super(props);
-        this.state = this.buildDefaultState();
+        this.defaultState = this.buildDefaultState();
+        this.state = this.defaultState;
     }
     render() {
         return (
@@ -44,7 +45,7 @@ class SimpleForm extends Component {
     submitHandler = (event) => {
         event.preventDefault();
         this.props.login(this.state.username, this.state.password);
-        this.setState(this.buildDefaultState());
+        this.setState(this.defaultState);
     }
     getFieldsKeys = () => Object.keys(this.props.fields)
     buildDefaultState() {

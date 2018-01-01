@@ -1,26 +1,20 @@
-import axios from 'axios';
 import actions from './types';
+import api from './api';
 
-axios.defaults.headers.common['Content-Type'] = 'application/json';
-
-const ROOT_URL = 'http://localhost:8000';
-
-export function login(username, password) {
-    const url = `${ROOT_URL}/get_auth_token/`;
-    const request = axios.post(url, { username, password });
-    return (dispatch) => {
-        request
+export const login = (username, password) => (
+    (dispatch) => {
+        api.login(username, password)
             .then((response) => {
                 dispatch({
                     type: actions.LOGIN,
                     payload: response
-                });
+                })
             })
             .catch((error) => {
                 dispatch({
                     type: actions.ERROR,
                     payload: error
-                });
+                })
             });
-    };
-}
+    }
+);
