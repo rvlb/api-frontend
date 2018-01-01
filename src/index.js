@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import registerServiceWorker from './registerServiceWorker';
+import reducer from './reducers';
 import configureStore from './configure_store';
 import Form from './containers/simple_form';
+
+import registerServiceWorker from './registerServiceWorker';
 
 const formFields = {
     username: { placeholder: 'Usuário' },
@@ -18,7 +20,7 @@ const App = () => (
 );
 
 ReactDOM.render(
-    <Provider store={ configureStore() }>
+    <Provider store={ configureStore(reducer) }>
         <App />
     </Provider>, 
     document.getElementById('root')
