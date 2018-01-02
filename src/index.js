@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import reducer from './reducers';
 import configureStore from './configure_store';
-import Form from './containers/simple_form';
+import Form from './containers/login_form';
 
 import registerServiceWorker from './registerServiceWorker';
 

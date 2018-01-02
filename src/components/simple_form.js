@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import Input from '../components/input';
-import { login } from '../thunks';
 
 const ACCEPTED_INPUT_TYPES = ['text', 'password', 'email', 'hidden'];
 
-class SimpleForm extends Component {
+/* 
+    A form whose inputs are only text-based and that are cleaned once submission is performed.
+    Expects as props: 
+    1. An object containing its fields data;
+    2. A function to handle submission which accepts one object with form data as parameter.
+*/
+export default class SimpleForm extends Component {
     constructor(props) {
         super(props);
         this.defaultState = this.buildDefaultState();
@@ -44,7 +47,7 @@ class SimpleForm extends Component {
     }
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.login(this.state.username, this.state.password);
+        this.props.submitHandler(this.state);
         this.setState(this.defaultState);
     }
     getFieldsKeys = () => Object.keys(this.props.fields)
@@ -60,11 +63,6 @@ class SimpleForm extends Component {
 SimpleForm.propTypes = {
     fields: PropTypes.shape({
         type: PropTypes.oneOf(ACCEPTED_INPUT_TYPES)
-    })
+    }).isRequired,
+    submitHandler: PropTypes.func.isRequired
 }
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ login }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(SimpleForm);

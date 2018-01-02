@@ -1,5 +1,5 @@
 import api from '../api';
-import { loginSuccess, loginError } from '../actions';
+import { loginSuccess, loginError } from '../';
 
 export const login = (username, password) => (
     (dispatch) => {
