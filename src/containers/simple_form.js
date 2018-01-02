@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Input from '../components/input';
-import { login } from '../actions';
+import { login } from '../thunks';
 
 const ACCEPTED_INPUT_TYPES = ['text', 'password', 'email', 'hidden'];
 

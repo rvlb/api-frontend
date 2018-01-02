@@ -1,4 +1,4 @@
 export default {
-    LOGIN: 'LOGIN_ACTION',
-    ERROR: 'ERROR_ACTION',
+    LOGIN: 'LOGIN',
+    LOGIN_ERROR: 'LOGIN_ERROR',
 };
