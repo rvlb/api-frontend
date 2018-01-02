@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import SimpleForm from '../components/simple_form';
-import { login } from '../actions';
+import { login } from '../actions/creators';
 
 const LoginForm = (props) => (
     <SimpleForm 
